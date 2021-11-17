@@ -9,7 +9,7 @@ namespace CourseWork.Model.Data
 {
     public class AppContext : DbContext
     {
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
         public AppContext()
         {
             Database.EnsureCreated();
