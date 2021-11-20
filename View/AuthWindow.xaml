@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWork.View" 
         xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" 
-        d:DataContext="{d:DesignInstance Type=viewmodel:DataManageVM}"
+        d:DataContext="{d:DesignInstance Type=viewmodel:AuthVM}"
         mc:Ignorable="d"
         Title="Auth" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" SizeToContent="Manual" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" FlowDirection="LeftToRight">
     <Window.DataContext>
-        <viewmodel:DataManageVM/>
+        <viewmodel:AuthVM/>
     </Window.DataContext>
     <Grid>
         <StackPanel VerticalAlignment="Center" Width="150">

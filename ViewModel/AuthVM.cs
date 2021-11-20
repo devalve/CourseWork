@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace CourseWork.ViewModel
 {
-    public class DataManageVM : INotifyPropertyChanged
+    public class AuthVM: INotifyPropertyChanged
     {
 
 
@@ -38,9 +38,9 @@ namespace CourseWork.ViewModel
             MainWindow mainWindow = new();
             if (DataWorker.AuthUser(Nickname, Password))
                 OpenWindow(mainWindow);
-            else MessageBox.Show("WRONG DATA!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            else MessageBox.Show("WRONG DATA!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        private void OpenWindow(Window window)
+        private static void OpenWindow(Window window)
         {
             window.Owner = Application.Current.MainWindow;
             window.Show();
