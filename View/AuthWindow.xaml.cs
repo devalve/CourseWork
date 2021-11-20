@@ -1,7 +1,4 @@
-﻿using CourseWork.Model;
-using CourseWork.Model.Data;
-using CourseWork.ViewModel;
-using System.Collections.Generic;
+﻿using CourseWork.ViewModel;
 using System.Windows;
 
 namespace CourseWork.View
@@ -15,7 +12,6 @@ namespace CourseWork.View
         {
             InitializeComponent();
             DataContext = new AuthVM();
-            
         }
     }
 }

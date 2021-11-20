@@ -11,7 +11,7 @@ namespace CourseWork.Model.Data
 
         public static bool AuthUser(string nickname, string password)
         {
-            using (AppContext db = new())
+            using (ApplicationContext db = new())
             {
                 bool isAuthenticated = db.Users.Any(u => u.Nickname == nickname & u.Password == password);
                 if (isAuthenticated) return true;
@@ -21,7 +21,7 @@ namespace CourseWork.Model.Data
         }
         public static List<User> GetAllUsers()
         {
-            using AppContext db = new();
+            using ApplicationContext db = new();
             List<User> users = db.Users.ToList();
             return users;
         }
@@ -29,7 +29,7 @@ namespace CourseWork.Model.Data
         {
 
             //User user = new User() { Nickname = nickname, Password = password };
-            using (AppContext db = new())
+            using (ApplicationContext db = new())
             {
                 bool isNewUser = db.Users.Any(u=> u.Nickname == nickname & u.Password== password);
                 if (isNewUser) return "Already exist!";

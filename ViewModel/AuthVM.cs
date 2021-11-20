@@ -25,13 +25,6 @@ namespace CourseWork.ViewModel
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
         #region METHODS
         private void OpenMainWindow()
         {
@@ -53,5 +46,13 @@ namespace CourseWork.ViewModel
         public RelayCommand OpenMainWnd { get => openMainWnd ?? new(o => OpenMainWindow()); }
 
         #endregion
+
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
