@@ -15,9 +15,7 @@ namespace CourseWork.View
         {
             InitializeComponent();
             DataContext = new DataManageVM();
-
-            DataWorker.CreateUser("Dev", "123");
-            List<User> users = DataWorker.GetAllUsers();
+            
         }
     }
 }

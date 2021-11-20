@@ -9,14 +9,19 @@ namespace CourseWork.ViewModel
 {
     public class DataManageVM : INotifyPropertyChanged
     {
+
+
         private List<User> allUsers = DataWorker.GetAllUsers();
+
+        public string Nickname { get; set; }
+        public string Password { get; set; }
         public List<User> AllUsers
         {
             get => allUsers;
             set
             {
                 allUsers = value;
-                NotifyPropertyChanged("AllUsers");
+                NotifyPropertyChanged(nameof(AllUsers));
             }
         }
 
@@ -31,7 +36,9 @@ namespace CourseWork.ViewModel
         private void OpenMainWindow()
         {
             MainWindow mainWindow = new();
-            OpenWindow(mainWindow);
+            if (DataWorker.AuthUser(Nickname, Password))
+                OpenWindow(mainWindow);
+            else MessageBox.Show("WRONG DATA!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void OpenWindow(Window window)
         {
@@ -44,6 +51,7 @@ namespace CourseWork.ViewModel
 
         private readonly RelayCommand? openMainWnd;
         public RelayCommand OpenMainWnd { get => openMainWnd ?? new(o => OpenMainWindow()); }
+
         #endregion
     }
 }

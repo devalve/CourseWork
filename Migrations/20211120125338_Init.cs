@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
 namespace CourseWork.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +12,8 @@ namespace CourseWork.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nickname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nickname = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "The nickname of user"),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "The password of user")
                 },
                 constraints: table =>
                 {

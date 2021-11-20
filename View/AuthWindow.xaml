@@ -15,11 +15,11 @@
         <StackPanel VerticalAlignment="Center" Width="150">
             <StackPanel>
                 <Label>Login</Label>
-                <TextBox  Margin="0,0,0,5" />
+                <TextBox Name="Nickname" Margin="0,0,0,5" Text="{Binding Nickname}" />
             </StackPanel>
             <StackPanel>
                 <Label>Password</Label>
-                <PasswordBox Margin="0,0,0,5"></PasswordBox>
+                <TextBox Name="Password" Margin="0,0,0,5" Text="{Binding Password}"/>
             </StackPanel>
             <Button Margin="0,30,0,0" Command="{Binding OpenMainWnd}">Enter</Button>
         </StackPanel>
