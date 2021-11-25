@@ -7,13 +7,13 @@ using System.Windows;
 
 namespace CourseWork.ViewModel
 {
-    public class AuthVM: INotifyPropertyChanged
+    public class AuthVM : BaseVM
     {
 
 
         private List<User> allUsers = DataWorker.GetAllUsers();
 
-        public string Nickname { get; set; }
+        public static string Nickname { get; set; }
         public string Password { get; set; }
         public List<User> AllUsers
         {
@@ -42,17 +42,12 @@ namespace CourseWork.ViewModel
 
         #region COMMANDS
 
-        private readonly RelayCommand? openMainWnd;
+        private readonly RelayCommand openMainWnd;
         public RelayCommand OpenMainWnd { get => openMainWnd ?? new(o => OpenMainWindow()); }
 
         #endregion
 
 
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public string GetNickname() => Nickname;
     }
 }

@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace CourseWork.ViewModel
 {
-    public class MainVM : INotifyPropertyChanged
+    public class MainVM : BaseVM
     {
-        
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+       
     }
 }

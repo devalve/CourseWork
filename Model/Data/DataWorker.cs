@@ -25,19 +25,5 @@ namespace CourseWork.Model.Data
             List<User> users = db.Users.ToList();
             return users;
         }
-        public static string CreateUser(string nickname, string password)
-        {
-
-            //User user = new User() { Nickname = nickname, Password = password };
-            using (ApplicationContext db = new())
-            {
-                bool isNewUser = db.Users.Any(u=> u.Nickname == nickname & u.Password== password);
-                if (isNewUser) return "Already exist!";
-                User user = new User() { Nickname = nickname, Password = password };
-                db.Users.Add(user);
-                db.SaveChanges();
-                return user.Nickname;
-            }
-        }
     }
 }

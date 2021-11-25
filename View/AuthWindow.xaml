@@ -7,7 +7,12 @@
         xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel:AuthVM}"
         mc:Ignorable="d"
-        Title="Auth" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" SizeToContent="Manual" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" FlowDirection="LeftToRight">
+        Title="Auth" Height="300" 
+        Width="300" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        WindowStyle="SingleBorderWindow" 
+        >
     <Window.DataContext>
         <viewmodel:AuthVM/>
     </Window.DataContext>
