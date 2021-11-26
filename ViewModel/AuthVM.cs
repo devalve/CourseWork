@@ -45,9 +45,6 @@ namespace CourseWork.ViewModel
         private readonly RelayCommand openMainWnd;
         public RelayCommand OpenMainWnd { get => openMainWnd ?? new(o => OpenMainWindow()); }
 
-        #endregion
-
-
-        public string GetNickname() => Nickname;
+        #endregion  
     }
 }

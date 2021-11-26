@@ -3,32 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ReservationCanvasVM}"
+             xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:ReservationCanvasVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+              xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" >
+    <intr:Interaction.Triggers>
+        <intr:EventTrigger EventName="Loaded">
+            <intr:InvokeCommandAction Command="{Binding UserControlLoaded}"/>
+        </intr:EventTrigger>
+    </intr:Interaction.Triggers>
+
     <DockPanel>
 
         <Grid x:Name="headerGrid"
                     
             DockPanel.Dock="Top" 
-            Height="70">
-
+            Height="50">
+            <TextBlock Text="Meet Room" 
+                       VerticalAlignment="Center" 
+                       FontSize="24"
+                       FontWeight="Bold"/>
 
             <Image  Source="{Binding UserIconPath}"
                     Width="100" 
                     HorizontalAlignment="Right"
                     />
-            <TextBlock Text="{Binding Nickname, ValidatesOnDataErrors=True}" 
+            <TextBlock Text="{Binding Nickname}" 
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Right" Margin="0,0,100,0"/>
+                       HorizontalAlignment="Right"
+                       Margin="0,0,100,0"/>
         </Grid>
+
+
         <StackPanel x:Name="hoursStackPanel"
             DockPanel.Dock="Left" 
             Width="100">
 
         </StackPanel>
-        <Grid x:Name="contentGrid">
 
-        </Grid>
+        <DockPanel x:Name="contentStackPanel">
+            <UniformGrid x:Name="contentHeaderGrid"
+                         Columns="7"
+                DockPanel.Dock="Top" 
+                  Height="30" Margin="0,30,0,0">
+                <TextBlock Text="Понедельник"/>
+                <TextBlock Text="Вторник" Grid.Column="1"/>
+                <TextBlock Text="Среда" Grid.Column="2"/>
+                <TextBlock Text="Четверг" Grid.Column="3"/>
+                <TextBlock Text="Пятница" Grid.Column="4"/>
+                <TextBlock Text="Суббота" Grid.Column="5"/>
+                <TextBlock Text="Воскресенье" Grid.Column="6"/>
+            </UniformGrid>
+
+            <UniformGrid x:Name="contentGrid" Columns="7">
+
+            </UniformGrid>
+        </DockPanel>
+
     </DockPanel>
 </UserControl>
