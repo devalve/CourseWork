@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseWork.View.UserControls"
              xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" 
              d:DataContext="{d:DesignInstance Type=viewmodel:ReservationCanvasVM}"
              mc:Ignorable="d" 
@@ -29,37 +30,19 @@
                     Width="100" 
                     HorizontalAlignment="Right"
                     />
-            <TextBlock Text="{Binding Nickname}" 
+            <TextBlock Text="{Binding UserNickname}" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right"
                        Margin="0,0,100,0"/>
         </Grid>
 
 
-        <StackPanel x:Name="hoursStackPanel"
+        <StackPanel x:Name="hours"
             DockPanel.Dock="Left" 
-            Width="100">
-
+            Width="100" Margin="0,60,0,0" >
         </StackPanel>
 
-        <DockPanel x:Name="contentStackPanel">
-            <UniformGrid x:Name="contentHeaderGrid"
-                         Columns="7"
-                DockPanel.Dock="Top" 
-                  Height="30" Margin="0,30,0,0">
-                <TextBlock Text="Понедельник"/>
-                <TextBlock Text="Вторник" Grid.Column="1"/>
-                <TextBlock Text="Среда" Grid.Column="2"/>
-                <TextBlock Text="Четверг" Grid.Column="3"/>
-                <TextBlock Text="Пятница" Grid.Column="4"/>
-                <TextBlock Text="Суббота" Grid.Column="5"/>
-                <TextBlock Text="Воскресенье" Grid.Column="6"/>
-            </UniformGrid>
-
-            <UniformGrid x:Name="contentGrid" Columns="7">
-
-            </UniformGrid>
-        </DockPanel>
+        <ContentControl Margin="0,20,0,0" Content="{Binding CurrentUserControl}"/>
 
     </DockPanel>
 </UserControl>

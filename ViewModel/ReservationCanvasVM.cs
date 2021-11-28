@@ -1,21 +1,47 @@
 ﻿using CourseWork.Model;
 using System;
-using System.Windows;
 using System.Windows.Controls;
+using CourseWork.View.UserControls;
 
 namespace CourseWork.ViewModel
 {
     public class ReservationCanvasVM : BaseVM
     {
+        #region PROPERTIES
         private readonly string _nickname = AuthVM.Nickname;
         public static string UserIconPath { get => "/Resources/img/UserIcon.png"; }
-        public string Nickname { get => _nickname ?? "Default user"; }
+        public string UserNickname { get => _nickname ?? "Default user"; }
 
-        public static Grid contentGrid { get; set; }
+        private UserControl _currentUserControl = new ReservationGridContentUC();
+
+        public UserControl CurrentUserControl
+        {
+            get { return _currentUserControl; }
+            set { _currentUserControl = value; NotifyPropertyChanged(nameof(CurrentUserControl)); }
+        }
+
+        private UserControl _prevUserControl;
+
+        public UserControl PrevUserControl
+        {
+            get { return _prevUserControl; }
+            set { _prevUserControl = value; NotifyPropertyChanged(nameof(PrevUserControl)); }
+        }
+
+        #endregion
+
 
         #region COMMANDS
         private RelayCommand userControlLoaded;
         public RelayCommand UserControlLoaded { get => userControlLoaded ?? new(o => Loaded()); }
+
+
+        private RelayCommand setFutureReservationUserControl;
+        public RelayCommand SetFutureReservationUserControl { get => setFutureReservationUserControl ?? new(o => _SetFutureReservationUserControl()); }
+
+        private RelayCommand setPresentReservationUserControl;
+        public RelayCommand SetPresentReservationUserControl { get => setPresentReservationUserControl ?? new(o => _SetPresentReservationUserControl()); }
+
         #endregion
 
 
@@ -26,7 +52,17 @@ namespace CourseWork.ViewModel
 
         private static void Loaded()
         {
-            MessageBox.Show("User Control was loaded!");
+
+        }
+
+        private void _SetFutureReservationUserControl()
+        {
+            PrevUserControl = CurrentUserControl;
+            CurrentUserControl = new ReservationGridContentPastUC();
+        }
+        private void _SetPresentReservationUserControl()
+        {
+            CurrentUserControl = PrevUserControl;
         }
 
         #endregion

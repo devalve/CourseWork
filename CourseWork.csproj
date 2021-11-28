@@ -8,6 +8,10 @@
     <ApplicationIcon>Resources\img\app.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Resources\img\UserIcon.png" />
   </ItemGroup>
@@ -23,12 +27,22 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.3.0.54" />
-    <PackageReference Include="Syncfusion.SfInput.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="19.3.0.55" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\img\UserIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="View\UserControls\Reservation\ReservationGridContentPastUC.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

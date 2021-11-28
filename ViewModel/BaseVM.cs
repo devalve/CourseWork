@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace CourseWork.ViewModel
 {
-    public abstract class BaseVM : INotifyPropertyChanged
-    
+    public abstract class BaseVM : INotifyPropertyChanged, IDisposable
+
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public virtual void Dispose() { }
+
         public void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
