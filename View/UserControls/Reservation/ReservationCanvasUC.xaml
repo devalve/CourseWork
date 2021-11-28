@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="CourseWork.View.UserControls.ReservationCanvasUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseWork.View.UserControls"
+             xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:ReservationCanvasVM}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+              xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" >
+    <intr:Interaction.Triggers>
+        <intr:EventTrigger EventName="Loaded">
+            <intr:InvokeCommandAction Command="{Binding UserControlLoaded}"/>
+        </intr:EventTrigger>
+    </intr:Interaction.Triggers>
+
+    <DockPanel>
+
+        <Grid x:Name="headerGrid"
+                    
+            DockPanel.Dock="Top" 
+            Height="50">
+            <TextBlock Text="Meet Room" 
+                       VerticalAlignment="Center" 
+                       FontSize="24"
+                       FontWeight="Bold"/>
+
+            <Image  Source="{Binding UserIconPath}"
+                    Width="100" 
+                    HorizontalAlignment="Right"
+                    />
+            <TextBlock Text="{Binding UserNickname}" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,100,0"/>
+        </Grid>
+
+
+        <StackPanel x:Name="hours"
+            DockPanel.Dock="Left" 
+            Width="100" Margin="0,60,0,0" >
+        </StackPanel>
+
+        <ContentControl Margin="0,20,0,0" Content="{Binding CurrentUserControl}"/>
+
+    </DockPanel>
+</UserControl>

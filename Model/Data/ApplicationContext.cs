@@ -1,16 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+    
 namespace CourseWork.Model.Data
 {
-    public class AppContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public AppContext()
+        public ApplicationContext()
         {
             Database.EnsureCreated();
         }
@@ -18,5 +13,6 @@ namespace CourseWork.Model.Data
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CourseWork;Trusted_Connection=True;");
         }
+
     }
 }

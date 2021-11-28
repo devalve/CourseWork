@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CourseWork.Model
 {
     public class User
     {
-        public int Id{ get; set; }
-        public string Nickname{ get; set; }
-        public string Password{ get; set; }
+        public int Id { get; set; }
+
+        [Comment("The nickname of user")]
+        public string Nickname { get; set; }
+
+
+        [Comment("The password of user")]
+        public string Password { get; set; }
     }
 }

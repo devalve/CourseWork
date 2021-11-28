@@ -11,7 +11,7 @@ namespace CourseWork.View
         public AuthWindow()
         {
             InitializeComponent();
-            DataContext = new DataManageVM();
+            DataContext = new AuthVM();
         }
     }
 }
