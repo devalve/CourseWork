@@ -17,17 +17,43 @@
             x:Name="contentGrid"
             Margin="0,20,0,0" 
            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="16"/>
+
+
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Tag="Mon"/>
-                <ColumnDefinition Tag="Tue"/>
-                <ColumnDefinition Tag="Wed"/>
-                <ColumnDefinition Tag="Thur"/>
-                <ColumnDefinition Tag="Frid"/>
-                <ColumnDefinition Tag="Sat"/>
-                <ColumnDefinition Tag="Sun"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
         </Grid>
-
     </DockPanel>
 </UserControl>
