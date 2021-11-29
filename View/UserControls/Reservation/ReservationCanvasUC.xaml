@@ -21,10 +21,35 @@
                     
             DockPanel.Dock="Top" 
             Height="50">
+
+            <DockPanel Width="150"
+                HorizontalAlignment="Center">
+                <Button 
+                    IsEnabled="{Binding IsEnabledPrevBtn}"
+                    DockPanel.Dock="Left" 
+                    Content="Previous week" >   
+                    <intr:Interaction.Triggers>
+                        <intr:EventTrigger EventName="Click">
+                            <intr:InvokeCommandAction Command="{Binding PrevBtnClick}"/>
+                        </intr:EventTrigger>
+                    </intr:Interaction.Triggers>
+                </Button>
+                <Button 
+                    DockPanel.Dock="Right" 
+                    Content="Next week" 
+                    IsEnabled="{Binding IsEnabledNextBtn}"
+                    >
+                    <intr:Interaction.Triggers>
+                        <intr:EventTrigger EventName="Click">
+                            <intr:InvokeCommandAction Command="{Binding NextBtnClick}"/>
+                        </intr:EventTrigger>
+                    </intr:Interaction.Triggers>
+                </Button>
+            </DockPanel>
             <TextBlock Text="Meet Room" 
-                       VerticalAlignment="Center" 
+                       VerticalAlignment="Top" 
                        FontSize="24"
-                       FontWeight="Bold"/>
+                       FontWeight="Bold" Margin="10,4,-10,0"/>
 
             <Image  Source="{Binding UserIconPath}"
                     Width="100" 

@@ -11,11 +11,13 @@
         <UniformGrid x:Name="contentHeaderGrid"
                          Columns="7"
                 DockPanel.Dock="Top" 
-                  Height="30" />
+                  Height="30" >
+           
+        </UniformGrid>
 
         <Grid 
             x:Name="contentGrid"
-            Margin="0,20,0,0" 
+            Margin="0,15,0,0" 
            >
             <Grid.RowDefinitions>
                 <RowDefinition Height="16"/>

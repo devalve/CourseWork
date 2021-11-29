@@ -39,6 +39,9 @@
     <Page Update="View\UserControls\Reservation\ReservationGridContentPastUC.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+    <Page Update="View\UserControls\Reservation\ReservationGridContentPastUC.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
