@@ -57,7 +57,7 @@ namespace CourseWork.ViewModel
 
         private RelayCommand nextBtnClick;
         public RelayCommand NextBtnClick { get => nextBtnClick ?? new(o => _NextBtnClick()); }
-        
+
         private RelayCommand prevBtnClick;
         public RelayCommand PrevBtnClick { get => prevBtnClick ?? new(o => _PrevBtnClick()); }
 
@@ -74,7 +74,7 @@ namespace CourseWork.ViewModel
 
         }
 
-      
+
 
         private void _NextBtnClick()
         {

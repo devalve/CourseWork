@@ -8,12 +8,12 @@ namespace CourseWork.View.UserControls
     /// </summary>
     public partial class ReservationGridContentPastUC : UserControl
     {
-
+        
         public ReservationGridContentPastUC()
         {
             InitializeComponent();
             FillUtil.FillDaysOfWeek(contentHeaderGrid, -7, 0);
-            FillUtil.FillContentGrid(contentGrid);
+            FillUtil.FillContentGrid(contentGrid, "past");
         }
     }
 }

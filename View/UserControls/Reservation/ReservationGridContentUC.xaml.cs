@@ -13,7 +13,7 @@ namespace CourseWork.View.UserControls
         {
             InitializeComponent();
             FillUtil.FillDaysOfWeek(contentHeaderGrid, 0, 7);
-            FillUtil.FillContentGrid(contentGrid);
+            FillUtil.FillContentGrid(contentGrid, "present");
         }
     }
 }

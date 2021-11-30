@@ -25,5 +25,23 @@ namespace CourseWork.Model.Data
             List<User> users = db.Users.ToList();
             return users;
         }
+        public static void CreateReservation(int gridRow, int gridColumn, string page)
+        {
+            using (ApplicationContext db = new())
+            {
+                Reservation reservation = new() { GridColumn = gridColumn, GridRow = gridRow, Page = page };
+                db.Reservations.Add(reservation);
+                db.SaveChanges();
+            }
+        }
+        public static bool isReservationExist(int gridRow, int gridColumn, string page)
+        {
+            using (ApplicationContext db = new())
+            {
+                bool isExist = db.Reservations.Any(r => r.GridRow == gridRow && r.GridColumn == gridColumn && r.Page.ToLower() == page.ToLower());
+                if (isExist) return true;
+            }
+            return false;
+        }
     }
 }

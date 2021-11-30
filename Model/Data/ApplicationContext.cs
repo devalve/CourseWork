@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-    
+using System;
+
 namespace CourseWork.Model.Data
 {
     public class ApplicationContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
         public ApplicationContext()
         {
             Database.EnsureCreated();
@@ -12,6 +14,14 @@ namespace CourseWork.Model.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CourseWork;Trusted_Connection=True;");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Reservation>()  
+                .Property(e => e.Members)
+                .HasConversion(
+                r => string.Join(',', r),
+                r => r.Split(',', StringSplitOptions.RemoveEmptyEntries));
         }
 
     }
