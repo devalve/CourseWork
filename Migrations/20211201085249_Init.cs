@@ -15,6 +15,7 @@ namespace CourseWork.Migrations
                     GridColumn = table.Column<int>(type: "int", nullable: false),
                     GridRow = table.Column<int>(type: "int", nullable: false),
                     Page = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Members = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

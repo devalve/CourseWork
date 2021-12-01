@@ -25,23 +25,41 @@ namespace CourseWork.Model.Data
             List<User> users = db.Users.ToList();
             return users;
         }
-        public static void CreateReservation(int gridRow, int gridColumn, string page)
+        public static void CreateReservation(int gridRow, int gridColumn, string page, string user)
         {
             using (ApplicationContext db = new())
             {
-                Reservation reservation = new() { GridColumn = gridColumn, GridRow = gridRow, Page = page };
+                Reservation reservation = new() { GridColumn = gridColumn, GridRow = gridRow, Page = page, User = user };
                 db.Reservations.Add(reservation);
                 db.SaveChanges();
             }
         }
-        public static bool isReservationExist(int gridRow, int gridColumn, string page)
+        public static bool isReservationExist(int gridRow, int gridColumn, string page, string user)
         {
             using (ApplicationContext db = new())
             {
-                bool isExist = db.Reservations.Any(r => r.GridRow == gridRow && r.GridColumn == gridColumn && r.Page.ToLower() == page.ToLower());
+                bool isExist = db.Reservations.Any(r => r.GridRow == gridRow
+                && r.GridColumn == gridColumn
+                && r.Page.ToLower() == page.ToLower()
+                && r.User == user);
                 if (isExist) return true;
             }
             return false;
+        }
+        public static string GetReservationMembers(int gridRow, int gridColumn, string page, string user)
+        {
+            string reservationMembers;
+
+            using (ApplicationContext db = new())
+            {
+                Reservation reservation = db.Reservations.FirstOrDefault(
+                    r => r.GridRow == gridRow
+                && r.GridColumn == gridColumn
+                && r.Page.ToLower() == page.ToLower()
+                && r.User == user);
+                reservationMembers = reservation.Members == null ? " " : reservation.Members.First();
+            }
+            return reservationMembers;
         }
     }
 }

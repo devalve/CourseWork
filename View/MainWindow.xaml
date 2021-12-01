@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="Reservation"
-        Height="470" Width="800">
+        Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Grid>
         <uc:ReservationCanvasUC >
             
