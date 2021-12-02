@@ -25,11 +25,11 @@ namespace CourseWork.Model.Data
             List<User> users = db.Users.ToList();
             return users;
         }
-        public static void CreateReservation(int gridRow, int gridColumn, string page, string user)
+        public static void CreateReservation(int gridRow, int gridColumn, string page, string user, string members)
         {
             using (ApplicationContext db = new())
             {
-                Reservation reservation = new() { GridColumn = gridColumn, GridRow = gridRow, Page = page, User = user };
+                Reservation reservation = new() { GridColumn = gridColumn, GridRow = gridRow, Page = page, User = user, Members = members };
                 db.Reservations.Add(reservation);
                 db.SaveChanges();
             }
@@ -57,7 +57,7 @@ namespace CourseWork.Model.Data
                 && r.GridColumn == gridColumn
                 && r.Page.ToLower() == page.ToLower()
                 && r.User == user);
-                reservationMembers = reservation.Members == null ? " " : reservation.Members.First();
+                reservationMembers = reservation.Members == null ? "No members" : reservation.Members.ToString();
             }
             return reservationMembers;
         }

@@ -11,9 +11,16 @@ namespace CourseWork.Utils
     public class FillUtil
     {
         private readonly static DateTime TODAY = DateTime.Today;
+        /// <summary>
+        /// Pointer to current content grid
+        /// </summary>
         public static Grid CONTENT_GRID;
+        /// <summary>
+        /// Pointer to current page
+        /// </summary>
         public static string PAGE;
 
+        public static int COLUMN, ROW;
         public static void FillContentGrid(Grid contentGrid, string page)
         {
             CONTENT_GRID = contentGrid;
@@ -29,12 +36,11 @@ namespace CourseWork.Utils
                         if (DataWorker.isReservationExist(row, column, page, AuthVM.Nickname))
                         {
                             ui = new Button() { Content = DataWorker.GetReservationMembers(row, column, page, AuthVM.Nickname), FontSize = 7 };
-                            ((Button)ui).Click += OpenNewReservationWnd;
                         }
                         else
                         {
                             ui = new Button() { Content = "+" };
-                            ((Button)ui).Click += AddNewReservation;
+                            ((Button)ui).Click += OpenNewReservationWnd;
                         }
                         contentGrid.Children.Add(ui);
                         Grid.SetColumn(ui, column);
@@ -78,16 +84,11 @@ namespace CourseWork.Utils
             }
 
         }
-        private static void AddNewReservation(object sender, RoutedEventArgs e)
-        {
-            DataWorker.CreateReservation(Grid.GetRow(sender as Button),
-                                         Grid.GetColumn(sender as Button),
-                                         PAGE,
-                                         AuthVM.Nickname);
-            FillContentGrid(CONTENT_GRID, PAGE);
-        }
         private static void OpenNewReservationWnd(object sender, RoutedEventArgs e)
         {
+            COLUMN = Grid.GetColumn(sender as Button); 
+            ROW = Grid.GetRow(sender as Button);
+
             AddNewReservationWindow newReservationWindow = new();
             newReservationWindow.ShowDialog();
         }

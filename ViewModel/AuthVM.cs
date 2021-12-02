@@ -4,6 +4,7 @@ using CourseWork.View;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using CourseWork.Utils;
 
 namespace CourseWork.ViewModel
 {
@@ -30,14 +31,10 @@ namespace CourseWork.ViewModel
         {
             MainWindow mainWindow = new();
             if (DataWorker.AuthUser(Nickname, Password))
-                OpenWindow(mainWindow);
+                CommonUtil.OpenWindow(mainWindow);
             else MessageBox.Show("WRONG DATA!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        private static void OpenWindow(Window window)
-        {
-            window.Owner = Application.Current.MainWindow;
-            window.Show();
-        }
+       
         #endregion
 
         #region COMMANDS

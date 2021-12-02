@@ -9,6 +9,6 @@
         public string Page { get; set; }
         public string User { get; set; }
 
-        public string[]? Members { get; set; }
+        public string? Members { get; set; }
     }
 }
