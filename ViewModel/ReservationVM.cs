@@ -8,37 +8,38 @@ namespace CourseWork.ViewModel
 {
     public class ReservationVM : BaseVM
     {
-
-        private static string nickname = AuthVM.Nickname;
-        public static string Nickname
+        
+        private string nickname = AuthVM.Nickname;
+       
+        public string Nickname
         {
             get { return nickname; }
             set { nickname = value; }
         }
 
-        private static TimeSpan timeFrom;
-        public static TimeSpan TimeFrom
+        private TimeSpan timeFrom = DataWorker.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).TimeFrom;
+        public TimeSpan TimeFrom
         {
             get { return timeFrom; }
-            set { timeFrom = value; }
+            set { timeFrom = value; NotifyPropertyChanged(nameof(TimeFrom)); }
         }
 
-        private static TimeSpan timeTo;
-        public static TimeSpan TimeTo
+        private TimeSpan timeTo = DataWorker.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).TimeTo;
+        public TimeSpan TimeTo
         {
             get { return timeTo; }
-            set { timeTo = value; }
+            set { timeTo = value; NotifyPropertyChanged(nameof(TimeTo)); }
         }
 
-        private static string members;
+        private string members = DataWorker.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).Members;
 
-        public static string Members
+        public string Members
         {
             get { return members; }
-            set { members = value; }
+            set { members = value; NotifyPropertyChanged(nameof(Members)); }
         }
         #region METHODS
-        private static void _AddNewReservation()
+        private void _AddNewReservation()
         {
             if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
             {
@@ -53,7 +54,7 @@ namespace CourseWork.ViewModel
             }
             else MessageBox.Show("The time interval should be more than 30 minutes", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        private static void _EditReservation()
+        private void _EditReservation()
         {
             if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
             {
@@ -69,7 +70,7 @@ namespace CourseWork.ViewModel
             else MessageBox.Show("Something wrong. Check data", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private static void _OnClosed()
+        private void _OnClosed()
         {
             FillUtil.FillContentGrid(FillUtil.CONTENT_GRID, FillUtil.PAGE);
         }

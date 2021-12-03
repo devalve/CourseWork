@@ -83,20 +83,16 @@ namespace CourseWork.Model.Data
             }
             return false;
         }
-        public static string GetReservationMembers(int gridRow, int gridColumn, string page, string user)
+        public static Reservation GetReservationInfo(int gridRow, int gridColumn, string page, string user)
         {
-            string reservationMembers;
-
             using (ApplicationContext db = new())
             {
-                Reservation reservation = db.Reservations.FirstOrDefault(
-                    r => r.GridRow == gridRow
-                && r.GridColumn == gridColumn
-                && r.Page.ToLower() == page.ToLower()
-                && r.User == user);
-                reservationMembers = reservation.Members == null ? "No members" : reservation.Members;
+                Reservation reservation = db.Reservations.FirstOrDefault(r => r.GridRow == gridRow
+                                                                             && r.GridColumn == gridColumn
+                                                                             && r.Page.ToLower() == page.ToLower()
+                                                                             && r.User == user);
+                return reservation;
             }
-            return reservationMembers;
         }
     }
 }

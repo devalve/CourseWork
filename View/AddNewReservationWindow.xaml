@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
 
-        Title="New reservation" Height="300" Width="300">
+        Title="New reservation" Height="300" Width="300" WindowStartupLocation="CenterScreen">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
             <i:InvokeCommandAction Command="{Binding OnClosed}"/>

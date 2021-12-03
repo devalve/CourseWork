@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CourseWork.View" 
         xmlns:syncfusion="clr-namespace:Syncfusion.Windows.Controls.Input;assembly=Syncfusion.SfInput.Wpf" xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" d:DataContext="{d:DesignInstance Type=viewmodel:ReservationVM}"
         mc:Ignorable="d"
-        Title="Edit Reservation" Height="300" Width="300">
+        Title="Edit Reservation" Height="300" Width="300" WindowStartupLocation="CenterScreen">
    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
@@ -19,15 +19,16 @@
             <StackPanel>
                 <Label Content="Time from"></Label>
                 <syncfusion:SfMaskedEdit 
-                Text="{Binding TimeFrom}" Mask="00:00" Culture="ru-RU" 
-              
+                Text="{Binding TimeFrom}"
+                    Mask="00:00" 
+                    Culture="ru-RU" 
                 />
             </StackPanel>
             <StackPanel>
                 <Label Content="Time to"></Label>
                 <syncfusion:SfMaskedEdit 
                 Text="{Binding TimeTo}" 
-                Mask="00:00"  />
+                Mask="00:00"/>
             </StackPanel>
             <StackPanel>
                 <Label Content="Members"></Label>
