@@ -37,8 +37,10 @@
                 Height="40"/>
         </StackPanel>
         <Button Margin="0, 20, 0, 0" 
+                Cursor="Hand"
                 Content="Add" 
-                Command="{Binding AddNewReservation}"/> 
+                Command="{Binding AddNewReservation}"
+                Background="LimeGreen"/> 
     </StackPanel>
 
 </Window>

@@ -71,7 +71,19 @@ namespace CourseWork.Model.Data.Service
                                                                              && r.GridColumn == gridColumn
                                                                              && r.Page.ToLower() == page.ToLower()
                                                                              && r.User == user);
-                return reservation;
+                return reservation ?? new Reservation() { GridColumn = gridColumn, GridRow = gridRow, Page = page, User = user };
+            }
+        }
+        public static void DeleteReservation(int gridRow, int gridColumn, string page, string user)
+        {
+            using (ApplicationContext db = new())
+            {
+                Reservation reservation = db.Reservations.FirstOrDefault(r => r.GridRow == gridRow
+                                                                             && r.GridColumn == gridColumn
+                                                                             && r.Page.ToLower() == page.ToLower()
+                                                                             && r.User == user);
+                db.Reservations.Remove(reservation);
+                db.SaveChanges();
             }
         }
     }

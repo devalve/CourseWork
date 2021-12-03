@@ -18,6 +18,7 @@
             <DockPanel Width="150"
                 HorizontalAlignment="Center">
                 <Button 
+                    Cursor="Hand"
                     IsEnabled="{Binding IsEnabledPrevBtn}"
                     DockPanel.Dock="Left" 
                     Content="Previous week" >   
@@ -28,6 +29,7 @@
                     </intr:Interaction.Triggers>
                 </Button>
                 <Button 
+                    Cursor="Hand"
                     DockPanel.Dock="Right" 
                     Content="Next week" 
                     IsEnabled="{Binding IsEnabledNextBtn}"

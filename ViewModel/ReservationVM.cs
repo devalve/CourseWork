@@ -53,7 +53,7 @@ namespace CourseWork.ViewModel
                                          FillUtil.COLUMN,
                                          FillUtil.PAGE,
                                          AuthVM.Nickname,
-                                         Members,
+                                         Members ?? "No members",
                                          TimeFrom,
                                          TimeTo);
                 MessageBox.Show("Reservation has been successfully created. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
@@ -75,7 +75,18 @@ namespace CourseWork.ViewModel
             }
             else MessageBox.Show("Something wrong. Check data", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
+        public void _DeleteReservation()
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                ReservationService.DeleteReservation(FillUtil.ROW,
+                                       FillUtil.COLUMN,
+                                       FillUtil.PAGE,
+                                       AuthVM.Nickname);
+                MessageBox.Show("Reservation has been successfully delete. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
+        }
         private void _OnClosed()
         {
             FillUtil.FillContentGrid(FillUtil.CONTENT_GRID, FillUtil.PAGE);
@@ -94,6 +105,9 @@ namespace CourseWork.ViewModel
 
         private readonly RelayCommand editReservation;
         public RelayCommand EditReservation { get => editReservation ?? new(o => _EditReservation()); }
+
+        private readonly RelayCommand deleteReservation;
+        public RelayCommand DeleteReservation { get => deleteReservation ?? new(o => _DeleteReservation()); }
         #endregion  
     }
 }
