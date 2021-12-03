@@ -1,35 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace CourseWork.Model.Data
+namespace CourseWork.Model.Data.Service
 {
-    public class DataWorker
+    public class ReservationService
     {
-
-        public static bool AuthUser(string nickname, string password)
-        {
-            using (ApplicationContext db = new())
-            {
-                bool isAuthenticated = db.Users.Any(u => u.Nickname == nickname & u.Password == password);
-                if (isAuthenticated) return true;
-            }
-            return false;
-
-        }
-        public static List<User> GetAllUsers()
-        {
-            using ApplicationContext db = new();
-            List<User> users = db.Users.ToList();
-            return users;
-        }
         public static void CreateReservation(int gridRow,
-                                             int gridColumn,
-                                             string page,
-                                             string user,
-                                             string members,
-                                             TimeSpan timeFrom,
-                                             TimeSpan timeTo)
+                                         int gridColumn,
+                                         string page,
+                                         string user,
+                                         string members,
+                                         TimeSpan timeFrom,
+                                         TimeSpan timeTo)
         {
             using (ApplicationContext db = new())
             {

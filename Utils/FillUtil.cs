@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using CourseWork.View;
+using CourseWork.Model.Data.Service;
 
 namespace CourseWork.Utils
 {
@@ -33,9 +34,9 @@ namespace CourseWork.Utils
                     var dayOfWeek = TODAY.AddDays(column).DayOfWeek;
                     if (dayOfWeek == DayOfWeek.Saturday | dayOfWeek == DayOfWeek.Sunday)
                     {
-                        if (DataWorker.isReservationExist(row, column, page, AuthVM.Nickname))
+                        if (ReservationService.isReservationExist(row, column, page, AuthVM.Nickname))
                         {
-                            ui = new Button() { Content = DataWorker.GetReservationInfo(row, column, page, AuthVM.Nickname).Members, FontSize = 7 };
+                            ui = new Button() { Content = ReservationService.GetReservationInfo(row, column, page, AuthVM.Nickname).Members, FontSize = 7 };
                             ((Button)ui).Click += OpenEditReservationWnd;
                         }
                         else

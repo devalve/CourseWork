@@ -3,6 +3,7 @@ using CourseWork.Model.Data;
 using CourseWork.View;
 using System.Windows;
 using CourseWork.Utils;
+using CourseWork.Model.Data.Service;
 
 namespace CourseWork.ViewModel
 {
@@ -17,7 +18,7 @@ namespace CourseWork.ViewModel
         private void OpenMainWindow()
         {
             MainWindow mainWindow = new();
-            if (DataWorker.AuthUser(Nickname, Password))
+            if (UserService.AuthUser(Nickname, Password))
                 CommonUtil.OpenWindow(mainWindow);
             else MessageBox.Show("WRONG DATA!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }

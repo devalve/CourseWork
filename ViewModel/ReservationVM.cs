@@ -1,5 +1,6 @@
 ﻿using CourseWork.Model;
 using CourseWork.Model.Data;
+using CourseWork.Model.Data.Service;
 using CourseWork.Utils;
 using System;
 using System.Windows;
@@ -16,21 +17,25 @@ namespace CourseWork.ViewModel
             set { nickname = value; }
         }
 
-        private TimeSpan timeFrom = DataWorker.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).TimeFrom;
+        private TimeSpan timeFrom = ReservationService
+                                                    .GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname)
+                                                    .TimeFrom;
         public TimeSpan TimeFrom
         {
             get { return timeFrom; }
             set { timeFrom = value; NotifyPropertyChanged(nameof(TimeFrom)); }
         }
 
-        private TimeSpan timeTo = DataWorker.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).TimeTo;
+        private TimeSpan timeTo = ReservationService
+                                                .GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname)
+                                                .TimeTo;
         public TimeSpan TimeTo
         {
             get { return timeTo; }
             set { timeTo = value; NotifyPropertyChanged(nameof(TimeTo)); }
         }
 
-        private string members = DataWorker.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).Members;
+        private string members = ReservationService.GetReservationInfo(FillUtil.ROW, FillUtil.COLUMN, FillUtil.PAGE, AuthVM.Nickname).Members;
 
         public string Members
         {
@@ -44,7 +49,7 @@ namespace CourseWork.ViewModel
         {
             if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
             {
-                DataWorker.CreateReservation(FillUtil.ROW,
+                ReservationService.CreateReservation(FillUtil.ROW,
                                          FillUtil.COLUMN,
                                          FillUtil.PAGE,
                                          AuthVM.Nickname,
@@ -59,7 +64,7 @@ namespace CourseWork.ViewModel
         {
             if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
             {
-                DataWorker.EditReservation(FillUtil.ROW,
+                ReservationService.EditReservation(FillUtil.ROW,
                                          FillUtil.COLUMN,
                                          FillUtil.PAGE,
                                          AuthVM.Nickname,
