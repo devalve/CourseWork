@@ -1,5 +1,4 @@
 ﻿using CourseWork.Model;
-using System;
 using System.Windows.Controls;
 using CourseWork.View.UserControls;
 
@@ -47,12 +46,9 @@ namespace CourseWork.ViewModel
         }
 
         #endregion
-
-
         #region COMMANDS
 
         private RelayCommand userControlLoaded;
-        public RelayCommand UserControlLoaded { get => userControlLoaded ?? new(o => Loaded()); }
 
 
         private RelayCommand nextBtnClick;
@@ -62,20 +58,7 @@ namespace CourseWork.ViewModel
         public RelayCommand PrevBtnClick { get => prevBtnClick ?? new(o => _PrevBtnClick()); }
 
         #endregion
-
-
-
-
-
         #region METHODS
-
-        private static void Loaded()
-        {
-
-        }
-
-
-
         private void _NextBtnClick()
         {
             switch (CurrentUserControl)
@@ -112,7 +95,5 @@ namespace CourseWork.ViewModel
             }
         }
         #endregion
-
-
     }
 }

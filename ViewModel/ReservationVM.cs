@@ -8,9 +8,8 @@ namespace CourseWork.ViewModel
 {
     public class ReservationVM : BaseVM
     {
-        
         private string nickname = AuthVM.Nickname;
-       
+        #region PROPERTIES
         public string Nickname
         {
             get { return nickname; }
@@ -38,6 +37,8 @@ namespace CourseWork.ViewModel
             get { return members; }
             set { members = value; NotifyPropertyChanged(nameof(Members)); }
         }
+        #endregion
+
         #region METHODS
         private void _AddNewReservation()
         {

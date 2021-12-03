@@ -3,9 +3,6 @@ using CourseWork.Utils;
 
 namespace CourseWork.View.UserControls
 {
-    /// <summary>
-    /// Логика взаимодействия для ReservationGridContentUC.xaml
-    /// </summary>
     public partial class ReservationGridContentUC : UserControl
     {
 

@@ -9,16 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900"
               xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" >
-    <intr:Interaction.Triggers>
-        <intr:EventTrigger EventName="Loaded">
-            <intr:InvokeCommandAction Command="{Binding UserControlLoaded}"/>
-        </intr:EventTrigger>
-    </intr:Interaction.Triggers>
 
     <DockPanel>
-
-        <Grid x:Name="headerGrid"
-                    
+        <Grid x:Name="headerGrid"                
             DockPanel.Dock="Top" 
             Height="50">
 
