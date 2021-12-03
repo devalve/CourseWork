@@ -15,7 +15,5 @@ namespace CourseWork.Model.Data
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CourseWork;Trusted_Connection=True;");
         }
-      
-
     }
 }

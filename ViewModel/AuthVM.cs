@@ -11,20 +11,8 @@ namespace CourseWork.ViewModel
     public class AuthVM : BaseVM
     {
 
-
-        private List<User> allUsers = DataWorker.GetAllUsers();
-
         public static string Nickname { get; set; }
         public string Password { get; set; }
-        public List<User> AllUsers
-        {
-            get => allUsers;
-            set
-            {
-                allUsers = value;
-                NotifyPropertyChanged(nameof(AllUsers));
-            }
-        }
 
         #region METHODS
         private void OpenMainWindow()

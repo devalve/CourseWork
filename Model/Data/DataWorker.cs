@@ -25,12 +25,49 @@ namespace CourseWork.Model.Data
             List<User> users = db.Users.ToList();
             return users;
         }
-        public static void CreateReservation(int gridRow, int gridColumn, string page, string user, string members)
+        public static void CreateReservation(int gridRow,
+                                             int gridColumn,
+                                             string page,
+                                             string user,
+                                             string members,
+                                             TimeSpan timeFrom,
+                                             TimeSpan timeTo)
         {
             using (ApplicationContext db = new())
             {
-                Reservation reservation = new() { GridColumn = gridColumn, GridRow = gridRow, Page = page, User = user, Members = members };
+                Reservation reservation = new()
+                {
+                    GridColumn = gridColumn,
+                    GridRow = gridRow,
+                    Page = page,
+                    User = user,
+                    Members = members,
+                    TimeFrom = timeFrom,
+                    TimeTo = timeTo
+                };
                 db.Reservations.Add(reservation);
+                db.SaveChanges();
+            }
+        }
+        public static void EditReservation(int gridRow,
+                                           int gridColumn,
+                                           string page,
+                                           string user,
+                                           string members,
+                                           TimeSpan timeFrom,
+                                             TimeSpan timeTo)
+        {
+
+            using (ApplicationContext db = new())
+            {
+#pragma warning disable CS8600
+                Reservation reservation = db.Reservations.FirstOrDefault(r => r.GridRow == gridRow
+                                                                            && r.GridColumn == gridColumn
+                                                                            && r.Page.ToLower() == page.ToLower()
+                                                                            && r.User == user);
+                reservation.Members = members;
+                reservation.TimeFrom = timeFrom;
+                reservation.TimeTo = timeTo;
                 db.SaveChanges();
             }
         }
@@ -57,7 +94,7 @@ namespace CourseWork.Model.Data
                 && r.GridColumn == gridColumn
                 && r.Page.ToLower() == page.ToLower()
                 && r.User == user);
-                reservationMembers = reservation.Members == null ? "No members" : reservation.Members.ToString();
+                reservationMembers = reservation.Members == null ? "No members" : reservation.Members;
             }
             return reservationMembers;
         }

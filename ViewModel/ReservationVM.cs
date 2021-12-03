@@ -46,10 +46,27 @@ namespace CourseWork.ViewModel
                                          FillUtil.COLUMN,
                                          FillUtil.PAGE,
                                          AuthVM.Nickname,
-                                         Members);
+                                         Members,
+                                         TimeFrom,
+                                         TimeTo);
                 MessageBox.Show("Reservation has been successfully created. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
             else MessageBox.Show("The time interval should be more than 30 minutes", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        private static void _EditReservation()
+        {
+            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
+            {
+                DataWorker.EditReservation(FillUtil.ROW,
+                                         FillUtil.COLUMN,
+                                         FillUtil.PAGE,
+                                         AuthVM.Nickname,
+                                         Members,
+                                         TimeFrom,
+                                         TimeTo);
+                MessageBox.Show("Reservation has been successfully edit. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
+            else MessageBox.Show("Something wrong. Check data", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private static void _OnClosed()
@@ -66,6 +83,10 @@ namespace CourseWork.ViewModel
 
         private readonly RelayCommand onClosed;
         public RelayCommand OnClosed { get => onClosed ?? new(o => _OnClosed()); }
+
+
+        private readonly RelayCommand editReservation;
+        public RelayCommand EditReservation { get => editReservation ?? new(o => _EditReservation()); }
         #endregion  
     }
 }

@@ -36,6 +36,7 @@ namespace CourseWork.Utils
                         if (DataWorker.isReservationExist(row, column, page, AuthVM.Nickname))
                         {
                             ui = new Button() { Content = DataWorker.GetReservationMembers(row, column, page, AuthVM.Nickname), FontSize = 7 };
+                            ((Button)ui).Click += OpenEditReservationWnd;
                         }
                         else
                         {
@@ -91,6 +92,14 @@ namespace CourseWork.Utils
 
             AddNewReservationWindow newReservationWindow = new();
             newReservationWindow.ShowDialog();
+        }  
+        private static void OpenEditReservationWnd(object sender, RoutedEventArgs e)
+        {
+            COLUMN = Grid.GetColumn(sender as Button); 
+            ROW = Grid.GetRow(sender as Button);
+
+            EditReservationWindow editReservationWindow = new();
+            editReservationWindow.ShowDialog();
         }
     }
 }

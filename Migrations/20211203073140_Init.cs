@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CourseWork.Migrations
 {
@@ -16,6 +17,8 @@ namespace CourseWork.Migrations
                     GridRow = table.Column<int>(type: "int", nullable: false),
                     Page = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TimeFrom = table.Column<TimeSpan>(type: "time", nullable: false),
+                    TimeTo = table.Column<TimeSpan>(type: "time", nullable: false),
                     Members = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
