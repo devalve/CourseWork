@@ -54,7 +54,7 @@ namespace CourseWork.ViewModel
 
                     || reservation.TimeFrom >= TimeFrom && reservation.TimeFrom <= TimeTo)
 
-                    && FillUtil.PAGE == reservation.Page)
+                    && FillUtil.PAGE == reservation.Page && FillUtil.COLUMN == reservation.GridColumn)
                 {
                     isIntersect = true;
                     break;

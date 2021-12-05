@@ -55,7 +55,6 @@ namespace CourseWork.Utils
         {
             for (int i = from; i < to; i++)
             {
-                //todo вынести в Loaded контрола
                 StackPanel stackPanel = new() { Orientation = Orientation.Vertical, Margin = new Thickness(10, 0, 0, 0) };
                 stackPanel.Children.Add(new TextBlock() { Text = TODAY.AddDays(i).DayOfWeek.ToString() });
                 stackPanel.Children.Add(new Label() { Content = TODAY.AddDays(i).ToString("d"), FontWeight = FontWeights.Bold, FontSize = 7 });
