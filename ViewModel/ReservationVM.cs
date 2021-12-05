@@ -47,19 +47,7 @@ namespace CourseWork.ViewModel
         #region METHODS
         private void _AddNewReservation()
         {
-            bool isIntersect = false;
-            foreach (Reservation reservation in ReservationService.GetAllReservations())
-            {
-                if ((TimeFrom >= reservation.TimeFrom && TimeFrom <= reservation.TimeTo
-
-                    || reservation.TimeFrom >= TimeFrom && reservation.TimeFrom <= TimeTo)
-
-                    && FillUtil.PAGE == reservation.Page && FillUtil.COLUMN == reservation.GridColumn)
-                {
-                    isIntersect = true;
-                    break;
-                }
-            }
+            bool isIntersect = IsIntersect();
             if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30 & !isIntersect)
             {
                 ReservationService.CreateReservation(FillUtil.ROW,
@@ -74,9 +62,13 @@ namespace CourseWork.ViewModel
             else MessageBox.Show("The time interval should be more than 30 minutes\n" +
                 "or is this time already taken", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+
+
         private void _EditReservation()
         {
-            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
+            bool isIntersect = IsIntersect();
+            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30 && !isIntersect)
             {
                 ReservationService.EditReservation(FillUtil.ROW,
                                          FillUtil.COLUMN,
@@ -87,7 +79,8 @@ namespace CourseWork.ViewModel
                                          TimeTo);
                 MessageBox.Show("Reservation has been successfully edit. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
-            else MessageBox.Show("Something wrong. Check data", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            else MessageBox.Show("The time interval should be more than 30 minutes\n" +
+                "or is this time already taken", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         public void _DeleteReservation()
         {
@@ -104,6 +97,24 @@ namespace CourseWork.ViewModel
         private void _OnClosed()
         {
             FillUtil.FillContentGrid(FillUtil.CONTENT_GRID, FillUtil.PAGE);
+        }
+        private bool IsIntersect()
+        {
+            bool isIntersect = false;
+            foreach (Reservation reservation in ReservationService.GetAllReservations())
+            {
+                if ((TimeFrom >= reservation.TimeFrom && TimeFrom <= reservation.TimeTo
+
+                    || reservation.TimeFrom >= TimeFrom && reservation.TimeFrom <= TimeTo)
+
+                    && FillUtil.PAGE == reservation.Page && FillUtil.COLUMN == reservation.GridColumn)
+                {
+                    isIntersect = true;
+                    break;
+                }
+            }
+
+            return isIntersect;
         }
         #endregion
 
