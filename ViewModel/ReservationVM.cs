@@ -47,18 +47,32 @@ namespace CourseWork.ViewModel
         #region METHODS
         private void _AddNewReservation()
         {
-            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30)
+            bool isIntersect = false;
+            foreach (Reservation reservation in ReservationService.GetAllReservations())
+            {
+                if ((TimeFrom >= reservation.TimeFrom && TimeFrom <= reservation.TimeTo
+
+                    || reservation.TimeFrom >= TimeFrom && reservation.TimeFrom <= TimeTo)
+
+                    && FillUtil.PAGE == reservation.Page)
+                {
+                    isIntersect = true;
+                    break;
+                }
+            }
+            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30 & !isIntersect)
             {
                 ReservationService.CreateReservation(FillUtil.ROW,
-                                         FillUtil.COLUMN,
-                                         FillUtil.PAGE,
-                                         AuthVM.Nickname,
-                                         Members ?? "No members",
-                                         TimeFrom,
-                                         TimeTo);
+                                                     FillUtil.COLUMN,
+                                                     FillUtil.PAGE,
+                                                     AuthVM.Nickname,
+                                                     Members ?? "No members",
+                                                     TimeFrom,
+                                                     TimeTo);
                 MessageBox.Show("Reservation has been successfully created. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
-            else MessageBox.Show("The time interval should be more than 30 minutes", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            else MessageBox.Show("The time interval should be more than 30 minutes\n" +
+                "or is this time already taken", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void _EditReservation()
         {

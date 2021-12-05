@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CourseWork.Model.Data.Service
 {
     public class ReservationService
     {
+        public static List<Reservation> GetAllReservations()
+        {
+            using ApplicationContext db = new();
+            List<Reservation> reservations = db.Reservations.ToList();
+            return reservations;
+        }
         public static void CreateReservation(int gridRow,
                                          int gridColumn,
                                          string page,
@@ -13,21 +20,19 @@ namespace CourseWork.Model.Data.Service
                                          TimeSpan timeFrom,
                                          TimeSpan timeTo)
         {
-            using (ApplicationContext db = new())
+            using ApplicationContext db = new();
+            Reservation reservation = new()
             {
-                Reservation reservation = new()
-                {
-                    GridColumn = gridColumn,
-                    GridRow = gridRow,
-                    Page = page,
-                    User = user,
-                    Members = members,
-                    TimeFrom = timeFrom,
-                    TimeTo = timeTo
-                };
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-            }
+                GridColumn = gridColumn,
+                GridRow = gridRow,
+                Page = page,
+                User = user,
+                Members = members,
+                TimeFrom = timeFrom,
+                TimeTo = timeTo
+            };
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
         }
         public static void EditReservation(int gridRow,
                                            int gridColumn,
