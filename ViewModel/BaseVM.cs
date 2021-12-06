@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace CourseWork.ViewModel
 {
-    public abstract class BaseVM : INotifyPropertyChanged, IDisposable
+    public abstract class BaseVM : INotifyPropertyChanged
 
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public virtual void Dispose() { }
-
-        public void NotifyPropertyChanged(string propertyName)
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

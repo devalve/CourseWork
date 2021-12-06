@@ -26,7 +26,17 @@ namespace CourseWork.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("GridColumn")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GridRow")
+                        .HasColumnType("int");
+
                     b.Property<string>("Members")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Page")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<TimeSpan>("TimeFrom")
@@ -34,6 +44,10 @@ namespace CourseWork.Migrations
 
                     b.Property<TimeSpan>("TimeTo")
                         .HasColumnType("time");
+
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

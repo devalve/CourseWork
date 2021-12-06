@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseWork.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211120142753_Init")]
+    [Migration("20211203073140_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,17 @@ namespace CourseWork.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("GridColumn")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GridRow")
+                        .HasColumnType("int");
+
                     b.Property<string>("Members")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Page")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<TimeSpan>("TimeFrom")
@@ -36,6 +46,10 @@ namespace CourseWork.Migrations
 
                     b.Property<TimeSpan>("TimeTo")
                         .HasColumnType("time");
+
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

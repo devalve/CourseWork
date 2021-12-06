@@ -1,43 +1,28 @@
 ﻿using CourseWork.Model;
 using CourseWork.Model.Data;
 using CourseWork.View;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows;
+using CourseWork.Utils;
+using CourseWork.Model.Data.Service;
 
 namespace CourseWork.ViewModel
 {
     public class AuthVM : BaseVM
     {
-
-
-        private List<User> allUsers = DataWorker.GetAllUsers();
-
+        #region PROPERTIES
         public static string Nickname { get; set; }
         public string Password { get; set; }
-        public List<User> AllUsers
-        {
-            get => allUsers;
-            set
-            {
-                allUsers = value;
-                NotifyPropertyChanged(nameof(AllUsers));
-            }
-        }
+        #endregion
 
         #region METHODS
         private void OpenMainWindow()
         {
             MainWindow mainWindow = new();
-            if (DataWorker.AuthUser(Nickname, Password))
-                OpenWindow(mainWindow);
+            if (UserService.AuthUser(Nickname, Password))
+                CommonUtil.OpenWindow(mainWindow);
             else MessageBox.Show("WRONG DATA!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        private static void OpenWindow(Window window)
-        {
-            window.Owner = Application.Current.MainWindow;
-            window.Show();
-        }
+
         #endregion
 
         #region COMMANDS

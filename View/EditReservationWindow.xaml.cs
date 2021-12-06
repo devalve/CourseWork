@@ -3,12 +3,12 @@ using System.Windows;
 
 namespace CourseWork.View
 {
-    public partial class MainWindow : Window
+    public partial class EditReservationWindow : Window
     {
-        public MainWindow()
+        public EditReservationWindow()
         {
             InitializeComponent();
-            DataContext = new MainVM();
+            DataContext = new ReservationVM();
         }
     }
 }

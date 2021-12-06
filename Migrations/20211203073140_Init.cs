@@ -13,6 +13,10 @@ namespace CourseWork.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    GridColumn = table.Column<int>(type: "int", nullable: false),
+                    GridRow = table.Column<int>(type: "int", nullable: false),
+                    Page = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TimeFrom = table.Column<TimeSpan>(type: "time", nullable: false),
                     TimeTo = table.Column<TimeSpan>(type: "time", nullable: false),
                     Members = table.Column<string>(type: "nvarchar(max)", nullable: true)
