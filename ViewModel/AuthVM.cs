@@ -1,5 +1,4 @@
 ﻿using CourseWork.Model;
-using CourseWork.Model.Data;
 using CourseWork.View;
 using System.Windows;
 using CourseWork.Utils;
@@ -15,21 +14,30 @@ namespace CourseWork.ViewModel
         #endregion
 
         #region METHODS
-        private void OpenMainWindow()
+        private void _OpenMainWnd()
         {
             MainWindow mainWindow = new();
             if (UserService.AuthUser(Nickname, Password))
                 CommonUtil.OpenWindow(mainWindow);
             else MessageBox.Show("WRONG DATA!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+        private void _OnWndLoaded() => UserService.CreateUser("test", "123");
 
         #endregion
 
         #region COMMANDS
 
         private readonly RelayCommand openMainWnd;
-        public RelayCommand OpenMainWnd { get => openMainWnd ?? new(o => OpenMainWindow()); }
+        public RelayCommand OpenMainWnd { get => openMainWnd ?? new(o => _OpenMainWnd()); }
 
-        #endregion  
+        private RelayCommand onWndLoaded;
+
+        public RelayCommand OnWndLoaded
+        {
+            get => onWndLoaded ?? new(o => _OnWndLoaded());
+        }
+
+
+        #endregion
     }
 }

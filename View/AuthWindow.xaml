@@ -7,6 +7,8 @@
         xmlns:viewmodel="clr-namespace:CourseWork.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel:AuthVM}"
         mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        
         Title="Auth" Height="300" 
         Width="300" 
         WindowStartupLocation="CenterScreen" 
@@ -16,6 +18,12 @@
     <Window.DataContext>
         <viewmodel:AuthVM/>
     </Window.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding OnWndLoaded}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid>
         <StackPanel VerticalAlignment="Center" Width="150">
             <StackPanel>
