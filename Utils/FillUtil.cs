@@ -1,5 +1,4 @@
-﻿using CourseWork.Model.Data;
-using CourseWork.ViewModel;
+﻿using CourseWork.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;

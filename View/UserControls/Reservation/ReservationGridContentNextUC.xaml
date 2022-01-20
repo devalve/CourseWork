@@ -13,7 +13,7 @@
                          Columns="7"
                 DockPanel.Dock="Top" 
                   Height="30" >
-          
+
         </UniformGrid>
 
         <Grid 

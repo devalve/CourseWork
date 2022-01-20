@@ -1,5 +1,4 @@
 ﻿using CourseWork.Model;
-using CourseWork.Model.Data;
 using CourseWork.Model.Data.Service;
 using CourseWork.Utils;
 using System;
@@ -48,7 +47,7 @@ namespace CourseWork.ViewModel
         private void _AddNewReservation()
         {
             bool isIntersect = IsIntersect();
-            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30 & !isIntersect)
+            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30 & !isIntersect & TimeFrom < TimeTo)
             {
                 ReservationService.CreateReservation(FillUtil.ROW,
                                                      FillUtil.COLUMN,
@@ -67,8 +66,7 @@ namespace CourseWork.ViewModel
 
         private void _EditReservation()
         {
-            bool isIntersect = IsIntersect();
-            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30 && !isIntersect)
+            if (Math.Abs(TimeFrom.TotalMinutes - TimeTo.TotalMinutes) > 30  & TimeFrom < TimeTo)
             {
                 ReservationService.EditReservation(FillUtil.ROW,
                                          FillUtil.COLUMN,
@@ -80,7 +78,7 @@ namespace CourseWork.ViewModel
                 MessageBox.Show("Reservation has been successfully edit. You can close this window", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
             else MessageBox.Show("The time interval should be more than 30 minutes\n" +
-                "or is this time already taken", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                "or incorrect", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         public void _DeleteReservation()
         {
@@ -104,10 +102,11 @@ namespace CourseWork.ViewModel
             foreach (Reservation reservation in ReservationService.GetAllReservations())
             {
                 if ((TimeFrom >= reservation.TimeFrom && TimeFrom <= reservation.TimeTo
-
                     || reservation.TimeFrom >= TimeFrom && reservation.TimeFrom <= TimeTo)
 
-                    && FillUtil.PAGE == reservation.Page && FillUtil.COLUMN == reservation.GridColumn)
+                    && FillUtil.PAGE == reservation.Page 
+                    && FillUtil.COLUMN == reservation.GridColumn
+                    || TimeFrom > TimeTo)
                 {
                     isIntersect = true;
                     break;

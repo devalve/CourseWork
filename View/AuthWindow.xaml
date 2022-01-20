@@ -23,7 +23,7 @@
             <i:InvokeCommandAction Command="{Binding OnWndLoaded}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    
+
     <Grid>
         <StackPanel VerticalAlignment="Center" Width="150">
             <StackPanel>
